@@ -12,4 +12,10 @@ RSpec.describe "Idea" do
 
     expect(idea).to_not be_valid
   end
+
+  it "is valid with title and body" do
+    idea = Idea.create(title: 'test', body: 'so fun')
+
+    expect(idea).to be_valid
+  end
 end
