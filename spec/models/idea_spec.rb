@@ -28,5 +28,13 @@ RSpec.describe "Idea" do
     idea.upvote
 
     expect(idea.quality).to eq("plausible")
+
+    idea.upvote
+
+    expect(idea.quality).to eq("genius")
+
+    idea.upvote
+
+    expect(idea.quality).to eq("genius")
   end
 end
