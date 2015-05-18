@@ -23,7 +23,7 @@ RSpec.describe "Idea" do
     expect(idea.quality).to eq('swill')
   end
 
-  it "can have its quality incremented" do
+  it "can have its quality upvoted" do
     idea = Idea.create(title: "test", body: "so fun")
     idea.upvote
 
@@ -36,5 +36,20 @@ RSpec.describe "Idea" do
     idea.upvote
 
     expect(idea.quality).to eq("genius")
+  end
+
+  it "can have its quality downvoted" do
+    idea = Idea.create(title: "test", body: "so fun", quality: 2)
+    idea.downvote
+
+    expect(idea.quality).to eq("plausible")
+
+    idea.downvote
+
+    expect(idea.quality).to eq("swill")
+
+    idea.downvote
+
+    expect(idea.quality).to eq("swill")
   end
 end
