@@ -38,6 +38,8 @@ RSpec.describe IdeasController, type: :controller do
       expect do
         delete :destroy, format: :json, id: 1
       end.to change{Idea.count}.from(1).to(0)
+
+     expect(response.status).to eq(204)
     end
   end
 
@@ -46,6 +48,8 @@ RSpec.describe IdeasController, type: :controller do
       expect do
         post :create, format: :json, idea: { title: "markus", body: "is the man" }
       end.to change{Idea.count}.from(1).to(2)
+
+      expect(response.status).to eq(201)
     end
   end
 end
