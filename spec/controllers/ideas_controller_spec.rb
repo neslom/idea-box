@@ -32,4 +32,12 @@ RSpec.describe IdeasController, type: :controller do
       expect(updated_idea.body).to eq("what the")
     end
   end
+
+  describe "#destroy" do
+    it "deletes an idea" do
+      expect do
+        delete :destroy, format: :json, id: 1
+      end.to change{Idea.count}.from(1).to(0)
+    end
+  end
 end

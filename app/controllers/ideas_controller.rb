@@ -9,6 +9,10 @@ class IdeasController < ApplicationController
     respond_with Idea.update(params[:id], idea_params)
   end
 
+  def destroy
+    respond_with Idea.delete(params[:id])
+  end
+
   private
 
   def idea_params
