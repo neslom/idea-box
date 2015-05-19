@@ -1,5 +1,9 @@
+$background-color: #282829;
+$secondary-color: #E4FFDE;
+
 body {
-  background-color: #E0FFE1;
+  background-color: $background-color;
+  color: $secondary-color;
 }
 
 .container {

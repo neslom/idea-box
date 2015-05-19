@@ -17,7 +17,8 @@ $(document).ready(function() {
   function ideasIndex(data, cssId) {
     data.forEach(function(idea) {
       return cssId.append('<h2>Idea: ' + idea.title + '</h2>' +
-                          '<h4>Quality: ' + idea.quality + '</h4>' + "\n" + '' + idea.body +
+                          '<h4>Quality: ' + idea.quality + '</h4>' + "\n"
+                          + '<p id=\'ideaBody\'>' + idea.body + '</p>' +
                           '<br><button href=\'#\' class=\'btnStyled\' id=\'editIdea\'>Edit</a>' );
     });
   };
