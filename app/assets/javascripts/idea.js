@@ -12,7 +12,7 @@ $(document).ready(function() {
       method: "GET",
       url: '/ideas.json',
       success: function(data) {
-        ideasIndex(data, $ideasIndex);
+        addIdeasIndexToPage(data, $ideasIndex);
         $ideasIndex.show();
       }
     });
@@ -25,9 +25,7 @@ $(document).ready(function() {
       method: 'POST',
       url: '/ideas.json',
       data: { idea: { title: title, body: body } },
-      success: function(data) {
-        flashMessage(data);
-      }
+      success: flashMessage,
     });
   });
 
@@ -36,21 +34,29 @@ $(document).ready(function() {
     $ideaInput.show();
   });
 
-  function ideasIndex(data, cssId) {
-    data.forEach(function(idea) {
-      return cssId.append('<h2>Idea: ' + idea.title + '</h2>' +
+  function addIdeasIndexToPage(data, cssId) {
+    var ideas = data.map(function(idea) {
+      return ('<h2>Idea: ' + idea.title + '</h2>' +
           '<h4>Quality: ' + idea.quality + '</h4>' + "\n"
           + '<p id=\'ideaBody\'>' + idea.body + '</p>' +
           '<br><button href=\'#\' class=\'btnStyled\' id=\'editIdea\'>Edit</a>' );
     });
+    cssId.html(ideas);
   };
 
   function flashMessage(data) {
+    $('input').each(function() {
+      $(this).val('');
+    });
     $flash.show();
     $flash.append('<p>' + data.title + ' added to the box!</p>');
     $flash.fadeOut(3000, function() {
       $flash.children().remove();
     });
   };
+
 });
 
+function truthy() {
+  return true;
+};
