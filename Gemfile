@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders'
 
 group :development, :test do
+  gem 'faker'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
