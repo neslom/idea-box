@@ -1,13 +1,14 @@
 $(document).ready(function() {
-  var $showIdeas = $('#show-ideas');
-  var $ideas = $('.ideas');
+  var $showIdeas = $('#showIdeas');
+  var $ideasIndex = $('.ideasIndex');
+  var $newIdea = $('#newIdea');
 
   $showIdeas.click(function() {
     $.ajax({
       method: "GET",
       url: '/ideas.json',
       success: function(data) {
-        ideasIndex(data, $ideas);
+        ideasIndex(data, $ideasIndex);
       }
     });
     $showIdeas.toggle();
@@ -17,7 +18,7 @@ $(document).ready(function() {
     data.forEach(function(idea) {
       return cssId.append('<h2>Idea: ' + idea.title + '</h2>' +
                           '<h4>Quality: ' + idea.quality + '</h4>' + "\n" + '' + idea.body +
-                          ' <a href=\'#\' id=\'edit-idea\'>Edit</a>' );
+                          '<br><button href=\'#\' class=\'btnStyled\' id=\'editIdea\'>Edit</a>' );
     });
   };
 });
