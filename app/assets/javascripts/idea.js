@@ -4,21 +4,25 @@ $(document).ready(function() {
   var $newIdea = $('#newIdea');
   var $submit = $('#submit');
   var $flash = $('.flash');
+  var $ideaInput = $('.ideaInput');
 
-  $showIdeas.click(function() {
+  $showIdeas.on('click', function() {
+    //$ideasIndex.show();
+    $ideaInput.hide();
     $.ajax({
       method: "GET",
       url: '/ideas.json',
       success: function(data) {
         ideasIndex(data, $ideasIndex);
+        $ideasIndex.show();
       }
     });
-    $showIdeas.toggle();
   });
 
-  $submit.click(function() {
+  $submit.on('click', function() {
     var title = $('#ideaTitleText').val();
     var body = $('#ideaBodyText').val();
+    console.log(title);
     $.ajax({
       method: 'POST',
       url: '/ideas.json',
@@ -27,6 +31,11 @@ $(document).ready(function() {
         flashMessage(data);
       }
     });
+  });
+
+  $newIdea.on('click', function() {
+    $ideasIndex.hide();
+    $ideaInput.show();
   });
 
   function ideasIndex(data, cssId) {
