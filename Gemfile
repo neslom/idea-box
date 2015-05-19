@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'faker'
   gem 'byebug'
   gem 'rspec-rails'
@@ -22,6 +23,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'launchy'
 end

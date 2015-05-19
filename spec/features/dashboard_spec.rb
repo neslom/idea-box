@@ -4,7 +4,7 @@ RSpec.describe "Dashboard" do
   let!(:idea_1) { Idea.create(title: 'yolo', body: 'live once') }
   let!(:idea_2) { Idea.create(title: 'yodo', body: 'die once too', quality: 1) }
 
-  it "shows a list of ideas" do
+  it "shows a list of ideas", js: true do
     visit "/"
 
     expect(current_path).to eq(root_path)

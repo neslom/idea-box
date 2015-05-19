@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe IdeasController, type: :controller do
-  before(:each) do
-    Idea.create(id: 1, title: "yolo", body: "one time")
-  end
+  let!(:idea) { Idea.create(title: "yolo", body: "one time") }
 
   describe "#index" do
     it "returns all of the Ideas" do
@@ -19,14 +17,14 @@ RSpec.describe IdeasController, type: :controller do
 
   describe "#update" do
     it "can update an idea" do
-      idea = Idea.find(1)
+      original_idea = Idea.find(idea.id)
 
-      expect(idea.title).to eq("yolo")
-      expect(idea.body).to eq("one time")
+      expect(original_idea.title).to eq("yolo")
+      expect(original_idea.body).to eq("one time")
 
-      put :update, format: :json, id: 1, idea: { title: "wat", body: "what the" }
+      put :update, format: :json, id: original_idea.id, idea: { title: "wat", body: "what the" }
 
-      updated_idea = Idea.find(1)
+      updated_idea = Idea.find(original_idea.id)
 
       expect(updated_idea.title).to eq("wat")
       expect(updated_idea.body).to eq("what the")
@@ -36,7 +34,7 @@ RSpec.describe IdeasController, type: :controller do
   describe "#destroy" do
     it "deletes an idea" do
       expect do
-        delete :destroy, format: :json, id: 1
+        delete :destroy, format: :json, id: idea.id
       end.to change{Idea.count}.from(1).to(0)
 
      expect(response.status).to eq(204)
