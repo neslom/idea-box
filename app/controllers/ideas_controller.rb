@@ -4,4 +4,14 @@ class IdeasController < ApplicationController
   def index
     respond_with Idea.all
   end
+
+  def update
+    respond_with Idea.update(params[:id], idea_params)
+  end
+
+  private
+
+  def idea_params
+    params.require(:idea).permit(:title, :body, :quality)
+  end
 end
