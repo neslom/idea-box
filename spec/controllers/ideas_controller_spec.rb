@@ -40,4 +40,12 @@ RSpec.describe IdeasController, type: :controller do
       end.to change{Idea.count}.from(1).to(0)
     end
   end
+
+  describe "#create" do
+    it "creates a new idea" do
+      expect do
+        post :create, format: :json, idea: { title: "markus", body: "is the man" }
+      end.to change{Idea.count}.from(1).to(2)
+    end
+  end
 end
