@@ -7,7 +7,8 @@ RSpec.describe "Dashboard" do
   it "shows a list of ideas" do
     visit "/"
 
-    expect(current_path).to eq(ideas_path)
+    expect(current_path).to eq(root_path)
+    click_link_or_button("See Ideas")
     expect(page).to have_content(idea_1.title)
     expect(page).to have_content(idea_1.body)
     expect(page).to have_content(idea_2.title)
