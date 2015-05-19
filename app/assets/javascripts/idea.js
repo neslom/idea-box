@@ -10,12 +10,13 @@ $(document).ready(function() {
         ideasIndex(data, $ideas);
       }
     });
+    $showIdeas.toggle();
   });
 
   function ideasIndex(data, cssId) {
     data.forEach(function(idea) {
-      return cssId.append('<h3>Idea: ' + idea.title + ' Quality: ' +
-                          idea.quality + '</h3>' + "\n" + '' + idea.body +
+      return cssId.append('<h2>Idea: ' + idea.title + '</h2>' +
+                          '<h4>Quality: ' + idea.quality + '</h4>' + "\n" + '' + idea.body +
                           ' <a href=\'#\' id=\'edit-idea\'>Edit</a>' );
     });
   };

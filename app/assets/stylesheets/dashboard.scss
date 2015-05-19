@@ -1,0 +1,39 @@
+body {
+  background-color: #E0FFE1;
+}
+
+.container {
+  text-align: center;
+}
+
+.btnExample {
+  color: #900;
+  background: #FF0;
+  font-weight: bold;
+  border: 1px solid #900;
+}
+
+.btnExample:hover {
+  color: #FFF;
+  background: #900;
+}
+
+.idea-input {
+  margin: 2em;
+}
+
+input {
+  border: 5px solid white;
+  -webkit-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+  0 0 16px rgba(0,0,0,0.1);
+  -moz-box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+  0 0 16px rgba(0,0,0,0.1);
+  box-shadow:
+  inset 0 0 8px  rgba(0,0,0,0.1),
+  0 0 16px rgba(0,0,0,0.1);
+  padding: 15px;
+  background: rgba(255,255,255,0.5);
+  margin: 0 0 10px 0;
+}
