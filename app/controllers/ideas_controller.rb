@@ -3,6 +3,7 @@ class IdeasController < ApplicationController
 
   def index
     respond_with Idea.all
+    #respond_with Idea.order('created_at DESC').all
   end
 
   def update

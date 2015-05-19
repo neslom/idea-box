@@ -7,7 +7,6 @@ $(document).ready(function() {
   var $ideaInput = $('.ideaInput');
 
   $showIdeas.on('click', function() {
-    //$ideasIndex.show();
     $ideaInput.hide();
     $.ajax({
       method: "GET",
@@ -22,7 +21,6 @@ $(document).ready(function() {
   $submit.on('click', function() {
     var title = $('#ideaTitleText').val();
     var body = $('#ideaBodyText').val();
-    console.log(title);
     $.ajax({
       method: 'POST',
       url: '/ideas.json',
@@ -48,8 +46,11 @@ $(document).ready(function() {
   };
 
   function flashMessage(data) {
+    $flash.show();
     $flash.append('<p>' + data.title + ' added to the box!</p>');
-    $flash.fadeOut(3000);
-  }
+    $flash.fadeOut(3000, function() {
+      $flash.children().remove();
+    });
+  };
 });
 
