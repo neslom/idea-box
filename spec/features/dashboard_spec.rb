@@ -38,16 +38,19 @@ RSpec.describe "Dashboard" do
     end.to change{Idea.count}.from(2).to(1)
   end
 
-  xit "can upvote an idea", js: true do
+  it "can upvote an idea", js: true do
     Idea.last.destroy
     idea = Idea.first
 
-    expect(idea.quality).to eq("swill")
 
     visit "/"
     click_link_or_button("See Ideas")
 
+    expect(page).to have_content("swill")
+
     find(".fa-thumbs-up").click
-    expect(idea.quality).to eq("plausible")
+
+    expect(page).to_not have_content("swill")
+    expect(page).to have_content("plausible")
   end
 end
