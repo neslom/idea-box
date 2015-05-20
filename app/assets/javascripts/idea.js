@@ -26,6 +26,7 @@ $(document).ready(function() {
       url: '/ideas.json',
       data: { idea: { title: title, body: body } },
       success: flashMessage,
+      error: flashMessage
     });
   });
 
@@ -83,7 +84,11 @@ $(document).ready(function() {
       $(this).val('');
     });
     $flash.show();
-    $flash.append('<p>' + data.title + ' added to the box!</p>');
+    if (data.title === undefined) {
+      $flash.append('<p>You"re gonna need a better idea than that</p>');
+    } else {
+      $flash.append('<p>' + data.title + ' added to the box!</p>');
+    }
     $flash.fadeOut(3000, function() {
       $flash.children().remove();
     });

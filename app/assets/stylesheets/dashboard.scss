@@ -6,6 +6,11 @@ body {
   color: $secondary-color;
 }
 
+.hover {
+  background-color: $secondary-color;
+  color: $background-color;
+}
+
 .container {
   text-align: center;
 }
