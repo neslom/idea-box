@@ -67,6 +67,17 @@ $(document).ready(function() {
     });
   });
 
+  $('body').on('click', '.fa-thumbs-down', function() {
+    var id = $(this).data().id;
+    $.ajax({
+      method: 'GET',
+      url: '/ideas/' + id + '/downvote',
+      success: function(quality) {
+        $(this).siblings('.ideaQuality').text('' + quality);
+      }.bind(this)
+    });
+  });
+
   function flashMessage(data) {
     $('input').each(function() {
       $(this).val('');

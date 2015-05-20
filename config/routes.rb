@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get '/ideas/:id/upvote', to: 'ideas#upvote'
 
+  get '/ideas/:id/downvote', to: 'ideas#downvote'
+
   resources :ideas
 end

@@ -23,6 +23,12 @@ class IdeasController < ApplicationController
     respond_with idea.quality.to_json
   end
 
+  def downvote
+    idea = Idea.find_by(id: params[:id])
+    idea.downvote
+    respond_with idea.quality.to_json
+  end
+
   private
 
   def idea_params
