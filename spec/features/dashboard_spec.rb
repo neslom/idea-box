@@ -53,4 +53,18 @@ RSpec.describe "Dashboard" do
     expect(page).to_not have_content("swill")
     expect(page).to have_content("plausible")
   end
+
+  it "can downvote an idea", js: true do
+    Idea.first.destroy
+
+    visit "/"
+    click_link_or_button("See Ideas")
+
+    expect(page).to have_content("plausible")
+
+    find(".fa-thumbs-down").click
+
+    expect(page).to_not have_content("plausible")
+    expect(page).to have_content("swill")
+  end
 end
