@@ -28,4 +28,14 @@ RSpec.describe "Dashboard" do
       click_link_or_button("Save Idea")
     end.to change{Idea.count}.from(2).to(3)
   end
+
+  it "can delete an idea", js: true do
+    visit "/"
+
+    click_link_or_button("See Ideas")
+
+    expect do
+      first("#deleteIdea").click
+    end.to change{Idea.count}.from(2).to(1)
+  end
 end

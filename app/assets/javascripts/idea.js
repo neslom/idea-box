@@ -36,12 +36,23 @@ $(document).ready(function() {
 
   function addIdeasIndexToPage(data, cssId) {
     var ideas = data.map(function(idea) {
-      return ('<h2>Idea: ' + idea.title + '</h2>' +
+      return ('<div class=\'singleIdea\'><h2>Idea: ' + idea.title + '</h2>' +
           '<h4>Quality: ' + idea.quality + '</h4>' + "\n"
           + '<p id=\'ideaBody\'>' + idea.body + '</p>' +
-          '<br><button href=\'#\' class=\'btnStyled\' id=\'editIdea\'>Edit</a>' );
+          '<br><button href=\'#\' class=\'btnStyled\' data-id=' + idea.id + ' id=\'editIdea\'>Edit</a>' +
+          '<button href=\'#\' class=\'btnStyled\' data-id=' + idea.id + ' id=\'deleteIdea\'>Delete</a></div>' );
     });
-    cssId.html(ideas);
+
+    $.when(cssId.html(ideas)).then($('body').on('click', '#deleteIdea', function() {
+      var id = $(this).data().id;
+      $.ajax({
+        method: 'DELETE',
+        url: '/ideas/' + id + '.json',
+        success: function() {
+          $(this).parent().remove();
+        }.bind(this)
+      });
+    }));
   };
 
   function flashMessage(data) {
@@ -57,6 +68,3 @@ $(document).ready(function() {
 
 });
 
-function truthy() {
-  return true;
-};
