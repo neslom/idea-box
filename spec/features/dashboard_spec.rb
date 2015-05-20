@@ -31,11 +31,16 @@ RSpec.describe "Dashboard" do
 
   it "can delete an idea", js: true do
     visit "/"
-
     click_link_or_button("See Ideas")
 
     expect do
       first("#deleteIdea").click
     end.to change{Idea.count}.from(2).to(1)
+  end
+
+  xit "can upvote an idea", js: true do
+    visit "/"
+    click_link_or_button("See Ideas")
+
   end
 end
