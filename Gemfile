@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders'
 
 group :development, :test do
+  gem 'magic_lamp'
   gem 'teaspoon-mocha'
   gem 'database_cleaner'
   gem 'faker'

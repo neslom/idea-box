@@ -83,6 +83,10 @@ GEM
       addressable (~> 2.3)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
+    magic_lamp (1.6.0)
+      method_source
+      rails (>= 4.0.0)
+      rake
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -205,6 +209,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  magic_lamp
   pg
   pry
   rails (= 4.2.1)
