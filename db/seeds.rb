@@ -1,6 +1,6 @@
 class Seed
   def run
-    create_ideas(5)
+    create_ideas(10)
   end
 
   def create_ideas(quantity)

@@ -39,8 +39,16 @@ RSpec.describe "Dashboard" do
   end
 
   xit "can upvote an idea", js: true do
+    idea = Idea.first
+
+    expect(idea.quality).to eq("swill")
+
     visit "/"
     click_link_or_button("See Ideas")
 
+    expect do
+      first(".fa-thumbs-up").click
+      save_and_open_page
+    end.to change{idea.quality}.from("swill").to("plausible")
   end
 end

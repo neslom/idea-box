@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root to: "dashboard#index"
 
+  get '/ideas/:id/upvote', to: 'ideas#upvote'
+
   resources :ideas
 end
