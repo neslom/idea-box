@@ -91,7 +91,7 @@ $(document).ready(function() {
     } else {
       $flash.append('<p>' + data.title + ' added to the box!</p>');
     }
-    $flash.fadeOut(3000, function() {
+    $flash.fadeOut(2000, function() {
       $flash.children().remove();
     });
   };
