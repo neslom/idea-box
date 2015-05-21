@@ -6,8 +6,6 @@ $(document).ready(function() {
 
     $(".singleIdea").children('h2, p').each(function(i, e) {
       var searchedText = $(this).text().replace(/ /g, '').toLowerCase();
-      console.log(searchedText);
-      console.log(word);
 
       if ( searchedText.indexOf(word) === -1 ) {
         $(this).parent().hide();
