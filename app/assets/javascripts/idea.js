@@ -5,9 +5,11 @@ $(document).ready(function() {
   var $submit = $('#submit');
   var $flash = $('.flash');
   var $ideaInput = $('.ideaInput');
+  var $searchInput = $('.searchInput');
 
   $showIdeas.on('click', function() {
     $ideaInput.hide();
+    $searchInput.show();
     $.ajax({
       method: "GET",
       url: '/ideas.json',
@@ -32,6 +34,7 @@ $(document).ready(function() {
 
   $newIdea.on('click', function() {
     $ideasIndex.hide();
+    $searchInput.hide();
     $ideaInput.show();
   });
 
