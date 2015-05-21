@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var replaceWith = $('<input name="temp" type="text" />');
+  var replaceWith = $('<input name="temp" id="editIdeaBox" type="text"/>');
   var connectWith = $('input[name="hiddenField"]');
 
   $('body').on('dblclick', 'p#ideaBody', function() {

@@ -38,10 +38,9 @@ $(document).ready(function() {
   function addIdeasIndexToPage(data, cssId) {
     var ideas = data.map(function(idea) {
       return ('<div class=\'singleIdea\'><h2>Idea: ' + idea.title + '</h2>' +
-          '<h4><i class="fa fa-thumbs-up" + data-id=' + idea.id + '></i>  '
-          + '<p class="ideaQuality">' + idea.quality + '</p> <i class="fa fa-thumbs-down" + data-id=' + idea.id + '></i></h4>' + "\n"
-          + '<p id=\'ideaBody\'>' + idea.body + '</p>' +
-          '<br><button href=\'#\' class=\'btnStyled\' data-id=' + idea.id + ' id=\'editIdea\'>Edit</a>' +
+          '<h4><i class="fa fa-thumbs-up" data-id=' + idea.id + '></i>  ' +
+          '<p class="ideaQuality">' + idea.quality + '</p> <i class="fa fa-thumbs-down" data-id=' + idea.id + '></i></h4>' + "\n" +
+          '<p id=\'ideaBody\'>' + idea.body + '</p>' +
           '<button href=\'#\' class=\'btnStyled\' data-id=' + idea.id + ' id=\'deleteIdea\'>Delete</a></div>' );
     });
 
