@@ -2,8 +2,7 @@ class IdeasController < ApplicationController
   respond_to :json, :html
 
   def index
-    respond_with Idea.all
-    #respond_with Idea.order('created_at DESC').all
+    respond_with Idea.order('created_at DESC').all
   end
 
   def update
@@ -16,6 +15,18 @@ class IdeasController < ApplicationController
 
   def create
     respond_with Idea.create(idea_params)
+  end
+
+  def upvote
+    idea = Idea.find_by(id: params[:id])
+    idea.upvote
+    respond_with idea.quality.to_json
+  end
+
+  def downvote
+    idea = Idea.find_by(id: params[:id])
+    idea.downvote
+    respond_with idea.quality.to_json
   end
 
   private

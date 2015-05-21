@@ -28,4 +28,43 @@ RSpec.describe "Dashboard" do
       click_link_or_button("Save Idea")
     end.to change{Idea.count}.from(2).to(3)
   end
+
+  it "can delete an idea", js: true do
+    visit "/"
+    click_link_or_button("See Ideas")
+
+    expect do
+      first("#deleteIdea").click
+    end.to change{Idea.count}.from(2).to(1)
+  end
+
+  it "can upvote an idea", js: true do
+    Idea.last.destroy
+    idea = Idea.first
+
+
+    visit "/"
+    click_link_or_button("See Ideas")
+
+    expect(page).to have_content("swill")
+
+    find(".fa-thumbs-up").click
+
+    expect(page).to_not have_content("swill")
+    expect(page).to have_content("plausible")
+  end
+
+  it "can downvote an idea", js: true do
+    Idea.first.destroy
+
+    visit "/"
+    click_link_or_button("See Ideas")
+
+    expect(page).to have_content("plausible")
+
+    find(".fa-thumbs-down").click
+
+    expect(page).to_not have_content("plausible")
+    expect(page).to have_content("swill")
+  end
 end
