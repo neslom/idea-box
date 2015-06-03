@@ -11,12 +11,12 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'responders'
+gem 'faker'
 
 group :development, :test do
   gem 'magic_lamp'
   gem 'teaspoon-mocha'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
